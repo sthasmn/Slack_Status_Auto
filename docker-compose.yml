@@ -1,0 +1,11 @@
+services:
+  slack-bot:
+    build: .
+    container_name: slack_calendar_bot
+    restart: unless-stopped  # Auto-starts on reboot
+    environment:
+      - SLACK_TOKEN=xoxp-YOUR-TOKEN-HERE-PLEASE-CHANGE #change here
+    volumes:
+      # Map the local config folder to the container
+      # This ensures token.json persists even if you rebuild the container
+      - ./config:/app/config
